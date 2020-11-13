@@ -1,8 +1,46 @@
 # Binding::Slicer
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/binding/slicer`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem let you write code to construct Hash objects much easier!
 
-TODO: Delete this and the text above, and describe your gem
+You can write:
+
+```ruby
+require 'binding-slicer'
+using Binding::Slicer
+
+a = 1
+b = 2
+c = 3
+
+binding[:a, :b, :c] #-> {a: a, b: b, c: c}
+```
+
+You should always write very stressful code, like this:
+
+```ruby
+def foo(my_argument_one, my_argument_two, my_argument_three)
+    options = {
+        my_argument_one: my_argument_one,
+        my_argument_two: my_argument_two,
+        my_argument_three: my_argument_three,
+    }
+    bar(options)
+end
+```
+
+With this gem, you can simplify it dramatically!
+
+```ruby
+def foo(my_argument_one, my_argument_two, my_argument_three)
+    bar(binding[:my_argument_one, :my_argument_two, :my_argument_three])
+end
+```
+
+## TODO
+
+* Write tests!
+* Implement `_[:a, :b, :c]`
+* Can we use more hash-like presentation?
 
 ## Installation
 
@@ -19,16 +57,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install binding-slicer
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
