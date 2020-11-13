@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "binding-slicer"
-  spec.version       = "0.1.0"
+  spec.version       = "0.2.0"
   spec.authors       = ["TAGOMORI Satoshi"]
   spec.email         = ["tagomoris@gmail.com"]
 

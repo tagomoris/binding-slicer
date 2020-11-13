@@ -13,6 +13,21 @@ b = 2
 c = 3
 
 binding[:a, :b, :c] #-> {a: a, b: b, c: c}
+
+binding[:a, :b, d: 100] #-> {a: a, b: b, d: 100}
+```
+
+Or, you can use the shorter version:
+
+```
+require 'binding-slicer'
+using Binding::SSlicer
+
+a = 1
+b = 2
+c = 3
+
+_[:a, :b, d: 100]
 ```
 
 You should always write very stressful code, like this:
@@ -31,8 +46,11 @@ end
 With this gem, you can simplify it dramatically!
 
 ```ruby
+require 'binding-slicer'
+using Binding::SSlicer
+
 def foo(my_argument_one, my_argument_two, my_argument_three)
-    bar(binding[:my_argument_one, :my_argument_two, :my_argument_three])
+    bar(_[:my_argument_one, :my_argument_two, :my_argument_three])
 end
 ```
 
@@ -41,6 +59,7 @@ end
 * Write tests!
 * Implement `_[:a, :b, :c]`
 * Can we use more hash-like presentation?
+  * For example, `_{[:a, :b, :c]}` (Is this really better than `_[:a, :b, :c]`?)
 
 ## Installation
 
