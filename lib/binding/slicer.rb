@@ -1,8 +1,19 @@
-require "binding/slicer/version"
-
-module Binding
+class Binding
   module Slicer
-    class Error < StandardError; end
-    # Your code goes here...
+    module Mixin
+      def slice(*symbols)
+        hash = {}
+        symbols.each do |name|
+          hash[name] = local_variable_get(name)
+        end
+        hash
+      end
+
+      alias :"[]" :slice
+    end
+
+    refine Binding do
+      include Binding::Slicer::Mixin
+    end
   end
 end
