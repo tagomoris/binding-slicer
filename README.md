@@ -57,7 +57,6 @@ end
 ## TODO
 
 * Write tests!
-* Implement `_[:a, :b, :c]`
 * Can we use more hash-like presentation?
   * For example, `_{[:a, :b, :c]}` (Is this really better than `_[:a, :b, :c]`?)
 
